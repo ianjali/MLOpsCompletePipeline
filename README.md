@@ -26,11 +26,20 @@ Save model checkpoints and logs
 
 ### 4. Monitor Training (Optional)
 Run this on terminal 
+* Tensorboard
 ```
 tensorboard --logdir=logs/cola
 ```
 http://localhost:6006/ 
+* Weights and Bias
+ Create your accont and add your API Key to monitor
 
+
+### 5. Inferencing
+After training, update the model checkpoint path in the code and run
+```
+python inference.py
+```
 ## Project Structure
 
 data.py: Contains the DataModule class that handles data loading, preprocessing, and creating dataloaders
@@ -39,4 +48,8 @@ trainer.py: Main script that sets up training with appropriate callbacks and log
 
 ## Model Architecture
 The model uses a small BERT model (google/bert_uncased_L-2_H-128_A-2) with a linear classification head on top of the [CLS] token representation. It's configured to classify sentences into two categories: grammatically acceptable (1) or unacceptable (0).
+
+
+### References 
+* https://deep-learning-blogs.vercel.app/blog/mlops-project-setup-part1
 

@@ -1,6 +1,6 @@
 logs
-models
+models/*.ckpt
+# !models/*.dvc
 __pycache__
 wandb
-!models/*.dvc
 outputs

@@ -11,3 +11,5 @@ hydra-core
 omegaconf
 hydra_colorlog
 dvc
+onnx
+onnxruntime

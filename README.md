@@ -61,10 +61,16 @@ Initialize
 dvc init
 ```
 * configure remote storage(Google Drive) to store trained models (or datasets).
-Either do 
+ 
 ```
 dvc add models/best-checkpoint.ckpt
 ```
+```
+dvc push models/best-checkpoint.ckpt.dvc
+```
+
+### 8. Model Packaging - ONNX
+
 
 ## Project Structure
 

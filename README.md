@@ -70,6 +70,36 @@ dvc push models/best-checkpoint.ckpt.dvc
 ```
 
 ### 8. Model Packaging - ONNX
+ONNX defines a common set of operators - and a common file format to enable AI developers to use models with a variety of frameworks, tools, runtimes, and compilers.
+Run 
+```
+python convert_model_to_onnx.py
+```
+to convert your model into ONNX format
+Models in ONNX format can be easily deployed to various cloud platforms as well as to IoT devices.
+### 9. API endpoints
+Create endpoints using FastAPI 
+Check app.py
+Run
+```
+uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+```
+
+[http://localhost:8000/docs](http://localhost:8000/docs)
+
+### 10. Model Packaging - Docker
+For others to run the applications they have to set up the same environment as it was run on the host side which means a lot of manual configuration and installation of components
+By containerizing/packaging the application, we can run the application on any cloud platform to get advantages of managed services and autoscaling and reliability, and many more.
+
+The most prominent tool to do the packaging of application is Docker.
+
+Docker is a container management tool, which packages the application code, configuration, and dependencies into a portable image that can be shared and run on any platform or system.
+* A Docker File contains the list of commands to run which are necessary for the application to run (like dependencies, codes, command to run etc.)
+The best part is all layers are cached and if we modified some instructions in the Dockerfile then during the build process it will just rebuild the changed layer.
+
+* A Docker Image is a lightweight, standalone, executable package of software (built using dockerfile) that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings.
+
+* A Docker Container is an instance of Docker Image which contains the running application.
 
 
 ## Project Structure

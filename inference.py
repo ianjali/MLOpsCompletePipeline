@@ -31,5 +31,5 @@ class ColaPredictor:
 
 if __name__ == "__main__":
     sentence = "The boy is sitting on a bench"
-    predictor = ColaPredictor("./models/epoch=3-step=1072.ckpt")
+    predictor = ColaPredictor("./models/best-checkpoint.ckpt")
     print(predictor.predict(sentence))

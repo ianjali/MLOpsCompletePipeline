@@ -40,6 +40,32 @@ After training, update the model checkpoint path in the code and run
 ```
 python inference.py
 ```
+
+### 6. Hydra for model configurations
+```
+@hydra.main(config_path="./configs", config_name="config")
+```
+Hydra operates on top of OmegaConf, which is a YAML based hierarchical configuration system, with support for merging configurations from multiple sources (files, CLI argument, environment variables) providing a consistent API regardless of how the configuration was created.
+
+### 7. DVC Data Version Control
+There are many libraries which supports versioning of models and data. The prominent ones are:
+* DVC
+* DAGsHub
+* Hub
+* Modelstore
+* ModelDB
+
+Initialize 
+* This command will create .dvc folder and .dvcignore file.
+```
+dvc init
+```
+* configure remote storage(Google Drive) to store trained models (or datasets).
+Either do 
+```
+dvc add models/best-checkpoint.ckpt
+```
+
 ## Project Structure
 
 data.py: Contains the DataModule class that handles data loading, preprocessing, and creating dataloaders

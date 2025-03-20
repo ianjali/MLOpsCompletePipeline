@@ -101,6 +101,31 @@ The best part is all layers are cached and if we modified some instructions in t
 
 * A Docker Container is an instance of Docker Image which contains the running application.
 
+Removing all containers
+```
+docker rm -f $(docker ps -aq)
+```
+Removing all images 
+```
+docker rmi -f $(docker images -aq)
+```
+
+Creating image 
+```
+docker build -t inference:latest .
+```
+Run on container 
+```
+docker run -p 8000:8000 inference:latest
+```
+
+ Docker Compose
+Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
+
+Services: These are the multiple docker containers which needs to be created (in our case it's only one)
+```
+docker-compose up
+```
 
 ## Project Structure
 

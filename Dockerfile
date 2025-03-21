@@ -8,8 +8,8 @@ COPY ./requirements_prod.txt /app/
 # COPY ./cred.json /app/
 COPY ./.dvc /app/
 COPY ./dvcfiles/trained_model.dvc /app/dvcfiles/
-COPY --chown=root:root ~/.cache/huggingface /root/.cache/huggingface
-ENV HF_HOME="/root/.cache/huggingface"
+COPY ./model_files /app/model_files
+ENV TRANSFORMERS_OFFLINE=1
 WORKDIR /app
 
 

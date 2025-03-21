@@ -123,10 +123,45 @@ docker run -p 8000:8000 inference:latest
 Docker Compose is a tool for defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. Then, with a single command, you create and start all the services from your configuration.
 
 Services: These are the multiple docker containers which needs to be created (in our case it's only one)
+Build and run the container using the command
 ```
 docker-compose up
 ```
+### 11. CI/CD - GitHub Actions
+There are many tools with which we can perform CI/CD. The prominent ones are:
 
+* Jenkins
+* CircleCI
+* Travis CI
+* GitLab
+* GitHub Actions
+GitHub Actions are just a set instructions declared using yaml files.
+
+There are 5 main concepts in GitHub Actions:
+
+* Events: An event is a trigger for workflow.
+* Jobs: Jobs defines the steps to run when a workflow is triggered. A workflow can contain multiple jobs.
+* Runners: Defines where to run the code. By default, github will run the code in it's own servers.
+* Steps: Steps contains actions to run. Each job can contains multiple steps to run.
+* Actions: Actions contains actual commands to run like installing dependencies, testing code, etc.
+
+#####  Creating Google Service Account
+Inorder to be able to download the model and test it automatically in CICD, service account(account associated with your GCP project) can be used.
+They are intended for scenarios where your code needs to access data on its own, e.g. running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth authentication is needed.
+
+##### Configuring DVC to use Google Service account 
+```
+dvc remote add -d storage gdrive://1mFW9xBUWo4O19lkTi5rcVErn7wcPvT56
+or -f if it already exists
+dvc remote add -f storage gdrive://1mFW9xBUWo4O19lkTi5rcVErn7wcPvT56
+dvc remote modify storage gdrive_use_service_account true
+dvc remote modify storage gdrive_service_account_json_file_path creds.json
+```
+dvc remote modify storage gdrive_service_account_json_file_path /Users/anjalimudgal/Documents/AWS/GCP/MLOps/mlopd-454407-d1da30b16c79.json
+
+##### Configuring GitHub Action
+1. Modify DockerFile
+2. Add in github action file build_docker_image.yaml in folder .github/worflows
 ## Project Structure
 
 data.py: Contains the DataModule class that handles data loading, preprocessing, and creating dataloaders

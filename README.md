@@ -194,15 +194,15 @@ Following the commands there:
 
 * Authenticating docker client to ECR
 ```
-aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 246113150184.dkr.ecr.us-west-2.amazonaws.com
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin [account].dkr.ecr.us-west-2.amazonaws.com
 ```
 * Tagging the image
 ```
-docker tag inference:test 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
+docker tag inference:test [account].dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
 ```
 * Pushing the image
 ```
-docker push 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
+docker push [account].dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
 ```
 ## Project Structure
 

@@ -1,9 +1,10 @@
 logs
 # models/*.ckpt
-models/*.ckpt
-models/best-checkpoint.ckpt.dvc
-models/model.onnx.dvc
+# models/*.ckpt
+# models/best-checkpoint.ckpt.dvc
+# models/model.onnx.dvc
 # !models/*.dvc
+models
 __pycache__
 wandb
 outputs

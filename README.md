@@ -162,11 +162,54 @@ dvc remote modify storage gdrive_service_account_json_file_path /Users/anjalimud
 ##### Configuring GitHub Action
 1. Modify DockerFile
 2. Add in github action file build_docker_image.yaml in folder .github/worflows
+
+
+
+
+### 12. Container Registry - AWS ECR
+A container registry is a place to store container images. A container image is a file comprised of multiple layers which can execute applications in a single instance. Hosting all the images in one stored location allows users to commit, identify and pull images when needed.
+
+There are many tools with which we can store the container images. The prominent ones are:
+
+* Docker Hub
+* Amazon Elastic Container Registry (ECR)
+* JFrog Container Registry
+* Google Container Registry
+* Azure container Registry
+
+Amazon Simple Storage Service (S3) is a storage for the internet.
+```
+pip install "dvc[s3]"
+```
+
+```
+dvc remote add -d model-store s3://models-dvc-1/trained_models/
+```
+
+Build docker image using 
+```
+docker build --build-arg AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --build-arg AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY  -t inference:test .
+```
+Following the commands there:
+
+* Authenticating docker client to ECR
+```
+aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 246113150184.dkr.ecr.us-west-2.amazonaws.com
+```
+* Tagging the image
+```
+docker tag inference:test 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
+```
+* Pushing the image
+```
+docker push 246113150184.dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
+```
 ## Project Structure
 
 data.py: Contains the DataModule class that handles data loading, preprocessing, and creating dataloaders
 model.py: Implements the ColaModel class, a PyTorch Lightning module for the CoLA task
 trainer.py: Main script that sets up training with appropriate callbacks and logging
+
 
 ## Model Architecture
 The model uses a small BERT model (google/bert_uncased_L-2_H-128_A-2) with a linear classification head on top of the [CLS] token representation. It's configured to classify sentences into two categories: grammatically acceptable (1) or unacceptable (0).

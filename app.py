@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from inference_onnx import ColaONNXPredictor
 app = FastAPI(title="MLOps Basics App")
 
-predictor = ColaONNXPredictor("./models/model.onnx")
+predictor = ColaONNXPredictor("dvcfiles/model.onnx")
 
 @app.get("/")
 async def home_page():

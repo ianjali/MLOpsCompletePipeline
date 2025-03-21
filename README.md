@@ -204,6 +204,29 @@ docker tag inference:test [account].dkr.ecr.us-west-2.amazonaws.com/mlops-basics
 ```
 docker push [account].dkr.ecr.us-west-2.amazonaws.com/mlops-basics:latest
 ```
+Modify code in github action 
+automatically create a docker image using GitHub Actions and save it to ECR.
+
+### 13. Serverless Deployment - AWS Lambda
+There are many ways to deploy the docker image in cloud.
+ways to deploy image in ECR 
+* ECS - Elastic Container Service
+* EKS - Elastic Kubernetes Service 
+* Serverless Lambda
+#### Advantages of serverless
+* It will handle the provising of servers
+* It will scale the machines up and down depending on usage
+* Does the load balancing
+* No cost when the code is not running
+#### Disdvantages of serverless
+* Response latency: There will be latency till the code is up and running (loading a model in case of ML).
+* Not useful for long running processes: It may cost more to run an application with long-running processes in a serverless infrastructure compared to a traditional one.
+* Difficult to debug: Debugging is difficult since the developer cannot have the access(ssh) to the machine where the code is running.
+* Vendor limitations: Setting up a serverless architecture with one vendor can make it difficult to switch vendors if necessary, especially since each vendor offers slightly different features and workflows.
+
+#### Triggering Lambda with API Gateway
+API Gateway handles all the tasks involved in accepting and processing up to hundreds of thousands of concurrent API calls, including traffic management, CORS support, authorization and access control, throttling, monitoring, and API version management.
+
 ## Project Structure
 
 data.py: Contains the DataModule class that handles data loading, preprocessing, and creating dataloaders

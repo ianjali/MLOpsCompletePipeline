@@ -5,7 +5,7 @@ COPY ./inference_onnx.py /app/
 COPY ./data.py /app/
 COPY ./utils.py /app/
 COPY ./requirements_prod.txt /app/
-COPY ./cred.json /app/
+# COPY ./cred.json /app/
 COPY ./.dvc /app/
 WORKDIR /app
 
@@ -19,7 +19,7 @@ RUN dvc init --no-scm
 # RUN dvc remote modify storage gdrive_use_service_account true
 # RUN dvc remote modify storage gdrive_service_account_json_file_path /app/cred.json
 # adding the model to dvc
-RUN cat .dvc/config
+# RUN cat .dvc/config
 # pulling the trained model
 # RUN dvc pull model.onnx
 

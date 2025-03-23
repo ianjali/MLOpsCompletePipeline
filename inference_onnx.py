@@ -34,6 +34,6 @@ if __name__ == "__main__":
     #./models/
     predictor = ColaONNXPredictor("./dvcfiles/model.onnx")
     print(predictor.predict(sentence))
-    sentences = ["The boy is sitting on a bench"] * 10
+    sentences = ["The boy is sitting on a bench"]*10
     for sentence in sentences:
         predictor.predict(sentence)

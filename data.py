@@ -9,7 +9,8 @@ from transformers import AutoTokenizer
 class DataModule(pl.LightningDataModule):
     def __init__(
         self,
-        model_name="/app/model_files/tokenizer",#google/bert_uncased_L-2_H-128_A-2",
+        #/app/
+        model_name="model_files/tokenizer",#google/bert_uncased_L-2_H-128_A-2",
         batch_size=64,
         max_length=128,
     ):        
